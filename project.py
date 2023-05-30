@@ -5,6 +5,7 @@ from sqltable import SQLTable
 from gateway_outcome import gateway_outcome
 from dotenv import load_dotenv
 import os
+
 load_dotenv() # Load dotenv to use the token
 
 def update_gateway(gateway_id):
