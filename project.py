@@ -2,7 +2,7 @@
 import requests
 from sqlalchemy import update, insert, delete
 from sqltable import SQLTable
-from gateway_outcome import gateway_outcome
+from gateway_outcome import gateway_outcome, disconnected_gateways
 from dotenv import load_dotenv
 import os
 load_dotenv() # Load dotenv to use the token
@@ -46,8 +46,8 @@ def iterate(initial_table):
 
 if __name__ == '__main__':
     #here we must iterate over the given table, with different ids for a period of time
-    print(update_gateway('laird-lab'))
-    print(gateway_outcome())
-
+    update_gateway('laird-lab')
+    # print(gateway_outcome())
+    print(disconnected_gateways(2))
 
 

@@ -8,7 +8,7 @@ class SQLTable():
     def __init__(self):
         '''Method to init the SQLTable Class'''
 
-        self.engine = db.create_engine('sqlite:///users.db', echo=True)
+        self.engine = db.create_engine('sqlite:///users.db', echo=False)
         Session = sessionmaker(bind=self.engine)
         self.session = Session()
         self.metadata_obj = db.MetaData()
