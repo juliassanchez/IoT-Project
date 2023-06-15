@@ -4,8 +4,8 @@ import requests
 from sqlalchemy import update, insert
 from sqltable import SQLTable
 from gateway_outcome import output
-from datetime import datetime
 from dotenv import load_dotenv
+from datetime import datetime
 from dateutil import tz
 
 load_dotenv() # Load dotenv to use the token
@@ -19,7 +19,7 @@ def update_gateway(gateway_id):
 
     # Obtain the json file for a given gateway (by its id)
     http_string = 'https://eu1.cloud.thethings.network/api/v3/gs/gateways/' + gateway_id + '/connection/stats'
-    r = requests.get(http_string, headers={'Authorization': 'Bearer ' + os.getenv('TOKEN_2')})
+    r = requests.get(http_string, headers={'Authorization': 'Bearer ' + os.getenv('TOKEN')})
     json_gateway_file = r.json()
 
     if json_gateway_file.get('last_status_received_at') == None:
