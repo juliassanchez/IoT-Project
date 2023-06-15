@@ -30,9 +30,7 @@ def update_gateway(gateway_id):
                                                last_status_received_at=last_status,
                                                ip=gateway_ip)
     else:
-        stmt = update(sqltable.gateway).values(gateway_id=gateway_id,
-                                           last_status_received_at=last_status,
-                                           ip=gateway_ip)
+        stmt = update(sqltable.gateway).where(sqltable.gateway.c.gateway_id == gateway_id).values(last_status_received_at=last_status)
     #stmt = delete(sqltable.gateway)
     with sqltable.engine.connect() as conn:
         conn.execute(stmt)
@@ -49,9 +47,6 @@ iterate(gateway_id_table)
 
 if __name__ == '__main__':
     #here we must iterate over the given table, with different ids for a period of time
-    #iterate(gateway_id_table)
-    #print(update_gateway('ripatransone'))
-    #print(update_gateway('agricola-punica')) #problema una vez se hace update de dos gateways
     print(gateway_outcome())
     print(disconnected_gateways(1))
 
