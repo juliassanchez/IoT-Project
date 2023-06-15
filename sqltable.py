@@ -1,7 +1,6 @@
 '''Python file for the sql table containing the gateway data'''
 import sqlalchemy as db
 from sqlalchemy.orm import sessionmaker
-from sqlalchemy import select
 
 class SQLTable():
     '''Class to create the SQLTable'''
@@ -24,5 +23,4 @@ class SQLTable():
 
 
     def checkIfInserted(self, gateway_id):
-        #select('*').select_from(self.gateway).where(self.gateway.c.gateway_id == gateway_id)
         return self.session.query(self.gateway).filter(self.gateway.c.gateway_id == gateway_id).first()
