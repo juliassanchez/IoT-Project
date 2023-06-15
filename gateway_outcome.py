@@ -26,10 +26,10 @@ def disconnected_gateways(sqltable, result, num_hours):
     now = datetime.now()
     table = []
     for i in range(len(result)):
-        if result[i][1] != 0:
+        if result[i][1] != str(None):
             last_status_received = datetime.strptime(str(result[i][1]), '%Y-%m-%d %H:%M:%S') # 2023-06-12T08:49:18.394358877Z
         else:
-            last_status_received = 0
+            last_status_received = datetime.strptime('2000-01-01 00:00:00', '%Y-%m-%d %H:%M:%S')
         diff_in_hours = (now - last_status_received).total_seconds() / 3600
         if diff_in_hours >= num_hours and last_status_received != 0:
             table.append(tuple((result[i])))

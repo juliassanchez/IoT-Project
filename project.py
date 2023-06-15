@@ -24,7 +24,7 @@ def update_gateway(gateway_id):
 
     if json_gateway_file.get('last_status_received_at') == None:
         # In case the gateway is completely disconnected
-        last_status_cet = '2000-01-01 00:00:00' # Arbitrary date to disconnected gateways
+        last_status_cet = str(None)
         gateway_ip = str(None)
     else:
         last_status = json_gateway_file['last_status_received_at']
